@@ -1,0 +1,641 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss/preflight"; /* Replaces @tailwind base */
+@import "tailwindcss/utilities"; /* Replaces @tailwind utilities */
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .text-30-extrabold {
+    font-size: 30px;
+    font-weight: 800; /* equivalent to font-extrabold */
+    color: white;
+  }
+
+  .text-30-bold {
+    font-size: 30px;
+    font-weight: 700; /* equivalent to font-bold */
+    color: black;
+  }
+
+  .text-30-semibold {
+    font-size: 30px;
+    font-weight: 600; /* equivalent to font-semibold */
+    color: black;
+  }
+
+  .text-26-semibold {
+    font-size: 26px;
+    font-weight: 600; /* equivalent to font-semibold */
+    color: black;
+  }
+
+  .text-24-black {
+    font-size: 24px;
+    font-weight: 900; /* equivalent to font-black */
+    color: black;
+  }
+
+  .text-20-medium {
+    font-size: 20px;
+    font-weight: 500; /* equivalent to font-medium */
+    color: black;
+  }
+
+  .text-16-medium {
+    font-size: 16px;
+    font-weight: 500; /* equivalent to font-medium */
+    color: black;
+  }
+
+  .text-14-normal {
+    font-size: 14px;
+    font-weight: 400; /* equivalent to font-normal */
+    color: rgba(
+      255,
+      255,
+      255,
+      0.8
+    ); /* assuming 'text-white-100/80' refers to a semi-transparent white */
+  }
+
+  .pink_container {
+    width: 100%;
+    background-color: #ee2b69; /* Primary color */
+    min-height: 530px;
+    background-image: linear-gradient(
+      to right,
+      transparent 49.5%,
+      rgba(251, 232, 67, 0.2) 49.5%,
+      rgba(251, 232, 67, 0.6) 50.5%,
+      transparent 50.5%
+    ); /* Pattern */
+    background-size: 5% 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+    padding-bottom: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+  }
+
+  .tag {
+    background-color: #fbe843; /* Secondary color */
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-top: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    padding-bottom: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700; /* equivalent to font-bold */
+    text-transform: uppercase;
+    border-radius: 0.125rem; /* equivalent to rounded-sm */
+    position: relative;
+  }
+
+  .tag::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    left: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    border-top: 10px solid black;
+    border-right: 10px solid transparent;
+  }
+
+  .tag::after {
+    content: "";
+    position: absolute;
+    bottom: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    right: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    border-bottom: 10px solid black;
+    border-left: 10px solid transparent;
+  }
+
+  .heading {
+    text-transform: uppercase;
+    background-color: black;
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-top: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    padding-bottom: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800; /* equivalent to font-extrabold */
+    color: white;
+    font-size: 36px;
+    line-height: 46px;
+    max-width: 80rem; /* equivalent to max-w-5xl */
+    text-align: center;
+    margin-top: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+    margin-bottom: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+  }
+
+  @media (min-width: 640px) {
+    .heading {
+      font-size: 54px;
+      line-height: 64px;
+    }
+  }
+
+  .sub-heading {
+    font-weight: 500; /* equivalent to font-medium */
+    font-size: 20px;
+    color: white;
+    max-width: 40rem; /* equivalent to max-w-2xl */
+    text-align: center;
+    word-wrap: break-word; /* equivalent to break-words */
+  }
+
+  .section_container {
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-top: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+    padding-bottom: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+    max-width: 85rem; /* equivalent to max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+    gap: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+  }
+
+  @media (max-width: 767px) {
+    .card_grid {
+      grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    }
+  }
+
+  .card_grid-sm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    gap: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+  }
+
+  .no-result {
+    color: rgba(0, 0, 0, 0.1); /* equivalent to text-black-100 */
+    font-size: 0.875rem; /* equivalent to text-sm */
+    font-weight: 400; /* equivalent to font-normal */
+  }
+
+  /* profile */
+  .profile_container {
+    width: 100%;
+    padding-bottom: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+    padding-top: 5rem; /* 20 * 0.25rem = 5rem */
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    max-width: 85rem; /* equivalent to max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* 10 * 0.25rem = 2.5rem */
+  }
+
+  @media (min-width: 1024px) {
+    .profile_container {
+      flex-direction: row; /* lg:flex-row */
+    }
+  }
+
+  .profile_card {
+    width: 20rem; /* equivalent to w-80 */
+    padding-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-right: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-bottom: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    padding-top: 5rem; /* 20 * 0.25rem = 5rem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ee2b69; /* primary color */
+    border-width: 5px;
+    border-color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* equivalent to shadow-100 */
+    border-radius: 30px;
+    position: relative;
+    z-index: 0;
+    height: fit-content;
+  }
+
+  @media (max-width: 1024px) {
+    .profile_card {
+      width: 100%; /* max-lg:w-full */
+    }
+  }
+
+  .profile_title {
+    width: 91.6667%; /* equivalent to w-11/12 */
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 20px;
+    padding-left: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+    padding-right: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+    padding-top: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    padding-bottom: 0.75rem; /* 3 * 0.25rem = 0.75rem */
+    position: absolute;
+    top: -2.25rem; /* -top-9 equivalent */
+  }
+
+  .profile_title::after,
+  .profile_title::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3.75rem; /* 60px */
+    background-color: black;
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .profile_title::after {
+    top: -0.25rem;
+    right: 0;
+    transform: skewY(-6deg);
+  }
+
+  .profile_title::before {
+    bottom: -0.25rem;
+    left: 0;
+    transform: skewY(6deg);
+  }
+
+  .profile_title {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* equivalent to shadow-100 */
+  }
+
+  .profile_image {
+    border-radius: 50%; /* equivalent to rounded-full */
+    object-fit: cover;
+    border-width: 3px;
+    border-color: black;
+  }
+
+  /* idea details */
+  .divider {
+    border-style: dotted;
+    background-color: #4b5563; /* equivalent to bg-zinc-400 */
+    max-width: 64rem; /* equivalent to max-w-4xl */
+    margin-top: 2.5rem; /* my-10 equivalent for vertical margin */
+    margin-bottom: 2.5rem; /* my-10 equivalent for vertical margin */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .view_skeleton {
+    background-color: #4b5563; /* equivalent to bg-zinc-400 */
+    height: 2.5rem; /* h-10 equivalent for height */
+    width: 6rem; /* w-24 equivalent for width */
+    border-radius: 0.5rem; /* rounded-lg equivalent for border-radius */
+    position: fixed;
+    bottom: 0.75rem; /* bottom-3 equivalent */
+    right: 0.75rem; /* right-3 equivalent */
+  }
+
+  /* navbar */
+  .avatar {
+    padding: 0 !important;
+    outline: none !important; /* equivalent to focus-visible:ring-0 */
+    background: none !important;
+    border-radius: 9999px !important; /* equivalent to rounded-full */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* equivalent to drop-shadow-md */
+  }
+
+  .dropdown-menu {
+    width: 14rem !important; /* equivalent to w-56 */
+    border-width: 5px !important; /* equivalent to border-[5px] */
+    border-color: #000 !important; /* equivalent to border-black */
+    background-color: #fff !important; /* equivalent to bg-white */
+    padding: 1.25rem !important; /* equivalent to p-5 */
+    border-radius: 1.5rem !important; /* equivalent to rounded-2xl */
+  }
+
+  .login {
+    border-width: 5px !important; /* equivalent to border-[5px] */
+    padding-top: 1rem !important; /* equivalent to py-4 */
+    padding-bottom: 1rem !important; /* equivalent to py-4 */
+    border-color: #000 !important; /* equivalent to border-black */
+    background-color: #fff !important; /* equivalent to bg-white */
+    color: #000 !important; /* equivalent to text-black */
+    position: relative !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* equivalent to shadow-100 */
+    font-family: "Work Sans", sans-serif !important; /* equivalent to font-work-sans */
+    font-weight: 500 !important; /* equivalent to font-medium */
+    transition: all 0.5s ease-in-out !important; /* equivalent to transition-all duration-500 */
+  }
+
+  .login:hover {
+    box-shadow: none !important; /* equivalent to hover:shadow-none */
+  }
+
+  /* searchform */
+  .search-form {
+    max-width: 48rem; /* equivalent to max-w-3xl */
+    width: 100%; /* equivalent to w-full */
+    min-height: 80px; /* equivalent to min-h-[80px] */
+    background-color: #fff; /* equivalent to bg-white */
+    border-width: 5px; /* equivalent to border-[5px] */
+    border-color: #000; /* equivalent to border-black */
+    border-radius: 80px; /* equivalent to rounded-[80px] */
+    font-size: 24px; /* equivalent to text-[24px] */
+    margin-top: 2rem; /* equivalent to mt-8 */
+    padding-left: 1.25rem; /* equivalent to px-5 */
+    padding-right: 1.25rem; /* equivalent to px-5 */
+    display: flex;
+    flex-direction: row; /* equivalent to flex-row */
+    align-items: center; /* equivalent to items-center */
+    gap: 1.25rem; /* equivalent to gap-5 */
+  }
+
+  .search-input {
+    flex-grow: 1; /* equivalent to flex-1 */
+    font-weight: 700; /* equivalent to font-bold */
+    width: 100%; /* equivalent to w-full */
+    height: auto; /* equivalent to h-auto */
+    outline: none; /* equivalent to outline-none */
+  }
+
+  .search-input::placeholder {
+    font-weight: 600; /* equivalent to placeholder:font-semibold */
+    color: rgba(0, 0, 0, 0.4); /* equivalent to placeholder:text-black-100 */
+  }
+
+  .search-btn {
+    width: 50px !important; /* equivalent to size-[50px] */
+    height: 50px !important; /* equivalent to size-[50px] */
+    border-radius: 9999px !important; /* equivalent to rounded-full */
+    background-color: #000 !important; /* equivalent to bg-black */
+    display: flex !important;
+    justify-content: center !important; /* equivalent to justify-center */
+    align-items: center !important; /* equivalent to items-center */
+  }
+
+  /* startupcard */
+  .startup-card {
+    background-color: #fff; /* equivalent to bg-white */
+    border-width: 5px; /* equivalent to border-[5px] */
+    border-color: #000; /* equivalent to border-black */
+    padding-top: 1.5rem; /* equivalent to py-6 */
+    padding-bottom: 1.5rem; /* equivalent to py-6 */
+    padding-left: 1.25rem; /* equivalent to px-5 */
+    padding-right: 1.25rem; /* equivalent to px-5 */
+    border-radius: 22px; /* equivalent to rounded-[22px] */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* equivalent to shadow-200 */
+    transition: all 0.5s ease-in-out; /* equivalent to transition-all duration-500 */
+  }
+
+  .startup-card:hover {
+    border-color: #ee2b69; /* equivalent to hover:border-primary */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* equivalent to hover:shadow-300 */
+    background-color: #fbe843; /* equivalent to hover:bg-primary-100 */
+  }
+
+  .startup-card_date {
+    font-weight: 500; /* equivalent to font-medium */
+    font-size: 16px; /* equivalent to text-[16px] */
+    background-color: #fbe843; /* equivalent to bg-primary-100 */
+    padding-left: 1rem; /* equivalent to px-4 */
+    padding-right: 1rem; /* equivalent to px-4 */
+    padding-top: 0.5rem; /* equivalent to py-2 */
+    padding-bottom: 0.5rem; /* equivalent to py-2 */
+    border-radius: 9999px; /* equivalent to rounded-full */
+  }
+
+  .startup-card_date:hover {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.8
+    ); /* equivalent to group-hover:bg-white-100 */
+  }
+
+  .startup-card_desc {
+    font-weight: 400; /* equivalent to font-normal */
+    font-size: 16px; /* equivalent to text-[16px] */
+    line-height: 1.5; /* equivalent to line-clamp-2 */
+    margin-top: 0.75rem; /* equivalent to my-3 */
+    margin-bottom: 0.75rem; /* equivalent to my-3 */
+    color: rgba(0, 0, 0, 0.6); /* equivalent to text-black-100 */
+    word-wrap: break-word; /* equivalent to break-all */
+  }
+
+  .startup-card_img {
+    width: 100%; /* equivalent to w-full */
+    height: 164px; /* equivalent to h-[164px] */
+    border-radius: 10px; /* equivalent to rounded-[10px] */
+    object-fit: cover; /* equivalent to object-cover */
+  }
+
+  .startup-card_btn {
+    border-radius: 9999px !important; /* equivalent to rounded-full */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ) !important; /* equivalent to bg-black-200 */
+    font-weight: 500 !important; /* equivalent to font-medium */
+    font-size: 16px !important; /* equivalent to text-[16px] */
+    color: #fff !important; /* equivalent to text-white */
+    padding-left: 1.25rem !important; /* equivalent to px-5 */
+    padding-right: 1.25rem !important; /* equivalent to px-5 */
+    padding-top: 0.75rem !important; /* equivalent to py-3 */
+    padding-bottom: 0.75rem !important; /* equivalent to py-3 */
+  }
+
+  .startup-card_skeleton {
+    width: 100%; /* equivalent to w-full */
+    height: 24rem; /* equivalent to h-96 */
+    border-radius: 22px; /* equivalent to rounded-[22px] */
+    background-color: #d1d5db; /* equivalent to bg-zinc-400 */
+  }
+
+  /* startupform */
+  .startup-form {
+    max-width: 672px; /* equivalent to max-w-2xl */
+    margin-left: auto; /* equivalent to mx-auto */
+    margin-right: auto; /* equivalent to mx-auto */
+    background-color: #fff; /* equivalent to bg-white */
+    margin-top: 2.5rem; /* equivalent to my-10 */
+    margin-bottom: 2.5rem; /* equivalent to my-10 */
+    padding-left: 1.5rem; /* equivalent to px-6 */
+    padding-right: 1.5rem; /* equivalent to px-6 */
+    display: block;
+  }
+
+  .startup-form > *:not(:last-child) {
+    margin-bottom: 2rem; /* equivalent to space-y-8 */
+  }
+
+  .startup-form_label {
+    font-weight: 700; /* equivalent to font-bold */
+    font-size: 18px; /* equivalent to text-[18px] */
+    color: #000; /* equivalent to text-black */
+    text-transform: uppercase; /* equivalent to uppercase */
+  }
+
+  .startup-form_input {
+    border-width: 3px; /* equivalent to border-[3px] */
+    border-color: #000; /* equivalent to border-black */
+    padding-left: 1.25rem; /* equivalent to px-5 */
+    padding-right: 1.25rem; /* equivalent to px-5 */
+    padding-top: 1.75rem; /* equivalent to py-7 */
+    padding-bottom: 1.75rem; /* equivalent to py-7 */
+    font-size: 18px; /* equivalent to text-[18px] */
+    color: #000; /* equivalent to text-black */
+    font-weight: 600; /* equivalent to font-semibold */
+    border-radius: 9999px; /* equivalent to rounded-full */
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+  }
+
+  .startup-form_input::placeholder {
+    color: rgba(0, 0, 0, 0.3); /* equivalent to placeholder:text-black-300 */
+  }
+
+  .startup-form_textarea {
+    border-width: 3px; /* equivalent to border-[3px] */
+    border-color: #000; /* equivalent to border-black */
+    padding-left: 1.25rem; /* equivalent to px-5 */
+    padding-right: 1.25rem; /* equivalent to px-5 */
+    padding-top: 1.25rem; /* equivalent to p-5 */
+    padding-bottom: 1.25rem; /* equivalent to p-5 */
+    font-size: 18px; /* equivalent to text-[18px] */
+    color: #000; /* equivalent to text-black */
+    font-weight: 600; /* equivalent to font-semibold */
+    border-radius: 20px; /* equivalent to rounded-[20px] */
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+  }
+
+  .startup-form_textarea::placeholder {
+    color: rgba(0, 0, 0, 0.3); /* equivalent to placeholder:text-black-300 */
+  }
+
+  .startup-form_error {
+    color: #f87171; /* equivalent to text-red-500 */
+    margin-top: 0.5rem; /* equivalent to mt-2 */
+    margin-left: 1.25rem; /* equivalent to ml-5 */
+  }
+
+  .startup-form_editor {
+    margin-top: 0.75rem !important; /* equivalent to mt-3 */
+    border-width: 3px !important; /* equivalent to border-[3px] */
+    border-color: #000 !important; /* equivalent to border-black */
+    font-size: 18px !important; /* equivalent to text-[18px] */
+    color: #000 !important; /* equivalent to text-black */
+    font-weight: 600 !important; /* equivalent to font-semibold */
+  }
+
+  .startup-form_editor::placeholder {
+    color: rgba(
+      0,
+      0,
+      0,
+      0.3
+    ) !important; /* equivalent to placeholder:text-black-300 */
+  }
+
+  .startup-form_btn {
+    background-color: #fbe843 !important; /* equivalent to bg-primary */
+    border-width: 4px !important; /* equivalent to border-[4px] */
+    border-color: #000 !important; /* equivalent to border-black */
+    border-radius: 9999px !important; /* equivalent to rounded-full */
+    padding-top: 1.25rem !important; /* equivalent to p-5 */
+    padding-bottom: 1.25rem !important; /* equivalent to p-5 */
+    padding-left: 1.25rem !important; /* equivalent to p-5 */
+    padding-right: 1.25rem !important; /* equivalent to p-5 */
+    min-height: 4.375rem !important; /* equivalent to min-h-[70px] */
+    width: 100% !important; /* equivalent to w-full */
+    font-weight: 700 !important; /* equivalent to font-bold */
+    font-size: 18px !important; /* equivalent to text-[18px] */
+  }
+
+  /* view */
+  .view-container {
+    display: flex; /* equivalent to flex */
+    justify-content: flex-end; /* equivalent to justify-end */
+    align-items: center; /* equivalent to items-center */
+    margin-top: 1.25rem; /* equivalent to mt-5 */
+    position: fixed; /* equivalent to fixed */
+    bottom: 0.75rem; /* equivalent to bottom-3 */
+    right: 0.75rem; /* equivalent to right-3 */
+  }
+
+  .view-text {
+    font-weight: 500; /* equivalent to font-medium */
+    font-size: 16px; /* equivalent to text-[16px] */
+    background-color: #f3f4f6; /* equivalent to bg-primary-100 */
+    padding-left: 1rem; /* equivalent to px-4 */
+    padding-right: 1rem; /* equivalent to px-4 */
+    padding-top: 0.5rem; /* equivalent to py-2 */
+    padding-bottom: 0.5rem; /* equivalent to py-2 */
+    border-radius: 0.5rem; /* equivalent to rounded-lg */
+    text-transform: capitalize; /* equivalent to capitalize */
+  }
+
+  .category-tag {
+    font-weight: 500; /* equivalent to font-medium */
+    font-size: 16px; /* equivalent to text-[16px] */
+    background-color: #f3f4f6; /* equivalent to bg-primary-100 */
+    padding-left: 1rem; /* equivalent to px-4 */
+    padding-right: 1rem; /* equivalent to px-4 */
+    padding-top: 0.5rem; /* equivalent to py-2 */
+    padding-bottom: 0.5rem; /* equivalent to py-2 */
+    border-radius: 9999px; /* equivalent to rounded-full */
+  }
+
+  .pattern {
+    background-image: linear-gradient(
+      to right,
+      transparent 49.5%,
+      rgba(251, 232, 67, 0.2) 49.5%,
+      rgba(251, 232, 67, 0.6) 50.5%,
+      transparent 50.5%
+    );
+    background-size: 5% 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+
+  .tag-tri {
+    position: relative;
+  }
+
+  .tag-tri::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    left: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    border-top: 10px solid black;
+    border-right: 10px solid transparent;
+  }
+
+  .tag-tri::after {
+    content: "";
+    position: absolute;
+    bottom: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    right: 0.5rem; /* 2 * 0.25rem = 0.5rem */
+    border-bottom: 10px solid black;
+    border-left: 10px solid transparent;
+  }
+}
+
+.w-md-editor-toolbar {
+  padding: 10px !important;
+}
