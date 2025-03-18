@@ -3,9 +3,27 @@ import { defineQuery } from "next-sanity";
 // These are groq queries that are used to fetch data from the Sanity API
 // They can be viewed and tested in the Sanity Vision Tab
 
-// Main Startup Query
+// Old - Main Startup Query
+// export const STARTUPS_QUERY =
+//   defineQuery(`*[_type == "startup" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search] | order(_createdAt desc) {
+//   _id,
+//   title,
+//   slug,
+//   _createdAt,
+//   author -> {
+//     _id, name, image, bio
+//   },
+//   views,
+//   description,
+//   category,
+//   image,
+// }`);
+
+// Get Startups based on search query
 export const STARTUPS_QUERY =
-  defineQuery(`*[_type == "startup" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search] | order(_createdAt desc) {
+  defineQuery(`*[_type == "startup" && defined(slug.current) && 
+  (!defined($search) || title match "*"+$search+"*" || category match "*"+$search+"*" || author->name match "*"+$search+"*")
+] | order(_createdAt desc) {
   _id, 
   title, 
   slug,
