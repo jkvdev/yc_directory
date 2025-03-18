@@ -20,31 +20,39 @@ export default async function Home({
 
   return (
     <>
+      {/* Hero Section */}
       <section className="pink_container">
+        {/* heading */}
         <h1 className="heading">
           Pitch Your Startup, <br />
           Connect With Entrepreneurs
         </h1>
 
+        {/* Subheading */}
         <p className="sub-heading !max-w-3xl">
           Submit Ideas, Vote on Pitches, and Get Noticed in Virtual
           Competitions.
         </p>
 
+        {/* Search Form */}
         <SearchForm query={query} />
       </section>
 
+      {/* Startup Section */}
       <section className="section_container">
+        {/* Check if there are any active queries */}
         <p className="text-30-semibold">
           {query ? `Search results for "${query}"` : "All Startups"}
         </p>
 
+        {/* Show filtered startups */}
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
             posts.map((post: StartupTypeCard) => (
               <StartupCard key={post?._id} post={post} />
             ))
           ) : (
+            // No startups found
             <p className="no-results">No startups found</p>
           )}
         </ul>
