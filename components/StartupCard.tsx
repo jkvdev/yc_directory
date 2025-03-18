@@ -23,7 +23,10 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   return (
     <li className="startup-card group">
       <div className="flex-between">
+        {/* Created Date */}
         <p className="startup_card_date">{formatDate(_createdAt)}</p>
+
+        {/* Number of views */}
         <div className="flex gap-1.5">
           <EyeIcon className="size-6 text-primary" />
           <span className="text-16-medium">{views}</span>
@@ -32,13 +35,18 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
+          {/* Author Name */}
           <Link href={`/user/${author?._id}`}>
             <p className="text-16-medium line-clamp-1">{author?.name}</p>
           </Link>
+
+          {/* Startup Name */}
           <Link href={`/startup/${_id}`}>
             <h3 className="text-26-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
+
+        {/* Author Image */}
         <Link href={`/user/${author?._id}`}>
           <Image
             src={author?.image!}
@@ -51,16 +59,22 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </Link>
       </div>
 
+      {/* Description and Image */}
       <Link href={`/startup/${_id}`}>
+        {/* Startup Description */}
         <p className="startup-card_desc">{description}</p>
 
+        {/* Startup image */}
         <img src={image} alt="placeholder" className="startup-card_img" />
       </Link>
 
       <div className="flex-between gap-3 mt-5">
+        {/* Category Tag */}
         <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
+
+        {/* Details Button */}
         <Button className="startup-card_btn" asChild>
           <Link href={`/startup/${_id}`}>Details</Link>
         </Button>

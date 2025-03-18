@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 const SearchForm = ({ query }: { query?: string }) => {
   return (
     <Form action="/" scroll={false} className="search-form">
-      {/* Input ofr query */}
+      {/* Query Input */}
       <input
         name="query"
         defaultValue={query}
