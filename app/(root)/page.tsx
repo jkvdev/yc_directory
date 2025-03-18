@@ -9,13 +9,16 @@ export default async function Home({
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
+  // Get Query from search params
   const query = (await searchParams).query;
   const params = { search: query || null };
 
+  // Get session
   const session = await auth();
+  // Check if session is available
+  // console.log(session?.id);
 
-  console.log(session?.id);
-
+  // Fetch Sanity Data/Posts
   const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
 
   return (

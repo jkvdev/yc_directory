@@ -1,5 +1,9 @@
 import { defineQuery } from "next-sanity";
 
+// These are groq queries that are used to fetch data from the Sanity API
+// They can be viewed and tested in the Sanity Vision Tab
+
+// Main Startup Query
 export const STARTUPS_QUERY =
   defineQuery(`*[_type == "startup" && defined(slug.current) && !defined($search) || title match $search || category match $search || author->name match $search] | order(_createdAt desc) {
   _id, 
@@ -15,6 +19,7 @@ export const STARTUPS_QUERY =
   image,
 }`);
 
+// Get startup by id
 export const STARTUP_BY_ID_QUERY =
   defineQuery(`*[_type == "startup" && _id == $id][0]{
   _id, 
@@ -31,12 +36,14 @@ export const STARTUP_BY_ID_QUERY =
   pitch,
 }`);
 
+// Get startup views
 export const STARTUP_VIEWS_QUERY = defineQuery(`
     *[_type == "startup" && _id == $id][0]{
         _id, views
     }
 `);
 
+// Get Author by Github ID
 export const AUTHOR_BY_GITHUB_ID_QUERY = defineQuery(`
 *[_type == "author" && id == $id][0]{
     _id,
@@ -49,6 +56,7 @@ export const AUTHOR_BY_GITHUB_ID_QUERY = defineQuery(`
 }
 `);
 
+// Get Author by ID
 export const AUTHOR_BY_ID_QUERY = defineQuery(`
 *[_type == "author" && _id == $id][0]{
     _id,
@@ -61,6 +69,7 @@ export const AUTHOR_BY_ID_QUERY = defineQuery(`
 }
 `);
 
+// Get Startups by Author
 export const STARTUPS_BY_AUTHOR_QUERY =
   defineQuery(`*[_type == "startup" && author._ref == $id] | order(_createdAt desc) {
   _id, 
@@ -76,6 +85,7 @@ export const STARTUPS_BY_AUTHOR_QUERY =
   image,
 }`);
 
+// Get Playlist by slug
 export const PLAYLIST_BY_SLUG_QUERY =
   defineQuery(`*[_type == "playlist" && slug.current == $slug][0]{
   _id,
