@@ -46,9 +46,12 @@ const Navbar = async () => {
                 className="flex gap-5 items-center justify-center"
                 href={`/user/${session?.id}`}
               >
+                {/* Username */}
                 <span className="max-lg:hidden font-semibold">
                   {session?.user?.name}
                 </span>
+
+                {/* Avatar */}
                 <Avatar className="size-10">
                   <AvatarImage
                     src={session?.user?.image || ""}
