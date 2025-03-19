@@ -11,6 +11,7 @@ export const writeClient = createClient({
   token,
 });
 
+// Safety check to ensure that the write token is set
 if (!writeClient.config().token) {
   throw new Error("Write token not found.");
 }
