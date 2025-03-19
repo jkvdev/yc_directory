@@ -4,9 +4,11 @@ import { AUTHOR_BY_GITHUB_ID_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { writeClient } from "@/sanity/lib/write-client";
 
+// Github Auth Logic
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   callbacks: {
+    // Sign In Callback
     async signIn({
       user: { name, email, image },
       // @ts-ignore
@@ -32,6 +34,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       return true;
     },
+    // Validating JWT Token
     async jwt({ token, account, profile }) {
       if (account && profile) {
         const user = await client
@@ -45,6 +48,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       return token;
     },
+    // Creating Session
     async session({ session, token }) {
       Object.assign(session, { id: token.id });
       return session;
