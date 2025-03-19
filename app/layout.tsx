@@ -4,6 +4,7 @@ import "./globals.css";
 import "easymde/dist/easymde.min.css";
 import { Toaster } from "@/components/ui/toaster";
 
+// Get Local Fonts
 const workSans = localFont({
   src: [
     {
@@ -55,6 +56,7 @@ const workSans = localFont({
   variable: "--font-work-sans",
 });
 
+// Metadata 
 export const metadata: Metadata = {
   title: "YC Directory",
   description: "Pitch, Vote and Grow",
@@ -68,7 +70,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.variable}>
+        {/* Render Children Elements */}
         {children}
+
+        {/* Enable Toaster Notifications */}
         <Toaster />
       </body>
     </html>

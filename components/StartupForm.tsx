@@ -22,8 +22,10 @@ const StartupForm = () => {
   // Reroute to the homepage
   const router = useRouter();
 
+  // Function to handle form submission
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
+      // Get form data values
       const formValues = {
         title: formData.get("title") as string,
         description: formData.get("description") as string,
@@ -32,41 +34,52 @@ const StartupForm = () => {
         pitch,
       };
 
+      // Validate data
       await formSchema.parseAsync(formValues);
 
+      // Get the result
       const result = await createPitch(prevState, formData, pitch);
 
       if (result.status == "SUCCESS") {
+        // Success toast notification
         toast({
           title: "Success",
           description: "Your startup pitch has been created successfully",
         });
 
+        // Redirect to the startup page
         router.push(`/startup/${result._id}`);
       }
 
       return result;
     } catch (error) {
+      // If it's a zod error
       if (error instanceof z.ZodError) {
+        // Flatten the errors in a single array
         const fieldErorrs = error.flatten().fieldErrors;
 
+        // Set the errors
         setErrors(fieldErorrs as unknown as Record<string, string>);
 
+        // Display a toast notification
         toast({
           title: "Error",
           description: "Please check your inputs and try again",
           variant: "destructive",
         });
 
+        // Return the error state
         return { ...prevState, error: "Validation failed", status: "ERROR" };
       }
 
+      // Display a toast notification for unexpected errors
       toast({
         title: "Error",
         description: "An unexpected error has occurred",
         variant: "destructive",
       });
 
+      // Return the error state
       return {
         ...prevState,
         error: "An unexpected error has occurred",
@@ -75,6 +88,7 @@ const StartupForm = () => {
     }
   };
 
+  // Get Form state
   const [state, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
@@ -175,8 +189,8 @@ const StartupForm = () => {
           onChange={(value) => setPitch(value as string)}
           id="pitch"
           preview="edit"
-          height={300}
-          style={{ borderRadius: 20, overflow: "hidden" }}
+          height={340}
+          className="startup-form_editor"
           textareaProps={{
             placeholder:
               "Briefly describe your idea and what problem it solves",
