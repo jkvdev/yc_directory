@@ -31,7 +31,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     client.fetch(STARTUP_BY_ID_QUERY, { id }),
     // Get editor picks / playlist based on preferences
     client.fetch(PLAYLIST_BY_SLUG_QUERY, {
-      slug: "editor-picks",
+      slug: "new-editor-picks",
     }),
   ]);
 
@@ -116,9 +116,12 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* Editor selected startups */}
         {editorPosts?.length > 0 && (
           <div className="max-w-4xl mx-auto">
+            {/* Editor Picks */}
             <p className="text-30-semibold">Editor Picks</p>
 
+            {/* Show Startups in a grid */}
             <ul className="mt-7 card_grid-sm">
+              {/* Map over startups and display them */}
               {editorPosts.map((post: StartupTypeCard, i: number) => (
                 <StartupCard key={i} post={post} />
               ))}
