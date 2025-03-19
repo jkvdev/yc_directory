@@ -1,3 +1,4 @@
+// Import Dependencies
 import { Suspense } from "react";
 import { client } from "@/sanity/lib/client";
 import {
@@ -14,21 +15,27 @@ import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 
+// Get sanity markdown functionality
 const md = markdownit();
 
+// Set PPR to true
 export const experimental_ppr = true;
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  // Get startup id from URL Params
   const id = (await params).id;
 
   // Parallel requests
   const [post, { select: editorPosts }] = await Promise.all([
+    // Get startup by ID
     client.fetch(STARTUP_BY_ID_QUERY, { id }),
+    // Get editor picks / playlist based on preferences
     client.fetch(PLAYLIST_BY_SLUG_QUERY, {
       slug: "editor-picks",
     }),
   ]);
 
+  // If no post found, return 404
   if (!post) return notFound();
 
   const parsedContent = md.render(post?.pitch || "");
