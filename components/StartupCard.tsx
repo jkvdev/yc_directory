@@ -84,9 +84,11 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   );
 };
 
+// ShadCN Skeleton for Startup Card
 export const StartupCardSkeleton = () => (
   <>
     {[0, 1, 2, 3, 4].map((index: number) => (
+      // Map over 5 skeleton cards
       <li key={cn("skeleton", index)}>
         <Skeleton className="startup-card_skeleton" />
       </li>
