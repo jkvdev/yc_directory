@@ -50,7 +50,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         {/* Author Image */}
         <Link
           href={`/user/${author?._id}`}
-          className="w-12 h-12 overflow-hidden rounded-full shadow-sm flex align-center justify-center"
+          className="w-12 h-12 overflow-hidden rounded-full shadow-sm flex items-center justify-center"
         >
           <Image
             src={author?.image!}

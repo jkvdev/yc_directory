@@ -35,7 +35,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
 
           {/* User Image */}
-          <div className="profile_image overflow-hidden w-56 h-56 rounded-full flex align-center justify-center">
+          <div className="profile_image overflow-hidden w-56 h-56 rounded-full flex items-center justify-center">
             <Image
               src={user.image}
               alt={user.name}

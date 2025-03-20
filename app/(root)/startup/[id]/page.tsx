@@ -74,13 +74,16 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-center mb-3"
             >
               {/* Author Avatar */}
-              <Image
-                src={post.author.image}
-                alt="avatar"
-                width={64}
-                height={64}
-                className="rounded-full"
-              />
+              <div className="overflow-hidden w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                <Image
+                  src={post.author.image}
+                  alt="avatar"
+                  width={64}
+                  height={64}
+                  layout="intrinsic"
+                  className="object-cover w-full h-full"
+                />
+              </div>
 
               {/* Author Name & Username */}
               <div>
