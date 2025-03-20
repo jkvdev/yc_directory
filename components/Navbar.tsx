@@ -56,7 +56,7 @@ const Navbar = async () => {
                   <AvatarImage
                     src={session?.user?.image || ""}
                     alt={session?.user?.name || ""}
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                   <AvatarFallback className="bg-gray-200">
                     <User className="size-8 text-white " />

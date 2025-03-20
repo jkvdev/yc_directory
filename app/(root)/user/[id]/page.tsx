@@ -42,7 +42,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               width={220}
               height={220}
               layout="intrinsic"
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
