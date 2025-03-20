@@ -28,7 +28,9 @@ const View = async ({ id }: { id: string }) => {
 
       {/* PPR view count */}
       <p className="view-text">
-        <span className="font-black">Views: {totalViews}</span>
+        <span className="font-black">
+          {totalViews ? totalViews : 0} View{totalViews != 1 && "s"}
+        </span>
       </p>
     </div>
   );
