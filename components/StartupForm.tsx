@@ -13,32 +13,47 @@ import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
 const StartupForm = () => {
+  // Save all form data inside of an objects
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    link: "",
+    pitch: "",
+  });
   // State for tracking the errors
   const [errors, setErrors] = useState<Record<string, string>>({});
-  // State for saving the pitch
-  const [pitch, setPitch] = useState("");
   // Toast Notifications
   const { toast } = useToast();
   // Reroute to the homepage
   const router = useRouter();
 
+  // Function to handle all input changes and save them
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData, // Keep the previous state
+      [e.target.name]: e.target.value, // Update formData dynamically
+    });
+  };
+
+  // Function to handle pitch changes
+  const handlePitchChange = (value: string | undefined) => {
+    setFormData({
+      ...formData,
+      pitch: value || "",
+    });
+  };
+
   // Function to handle form submission
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: any, formValues: FormData) => {
     try {
-      // Get form data values
-      const formValues = {
-        title: formData.get("title") as string,
-        description: formData.get("description") as string,
-        category: formData.get("category") as string,
-        link: formData.get("link") as string,
-        pitch,
-      };
+      // Validate the entire form only on submit
+      await formSchema.parseAsync(formData);
 
-      // Validate data
-      await formSchema.parseAsync(formValues);
-
-      // Get the result
-      const result = await createPitch(prevState, formData, pitch);
+      // Get the result / Created pitch
+      const result = await createPitch(prevState, formValues, formData.pitch);
 
       if (result.status == "SUCCESS") {
         // Success toast notification
@@ -47,11 +62,22 @@ const StartupForm = () => {
           description: "Your startup pitch has been created successfully",
         });
 
+        // Clear the form data
+        setFormData({
+          title: "",
+          description: "",
+          category: "",
+          link: "",
+          pitch: "",
+        });
         // Redirect to the startup page
         router.push(`/startup/${result._id}`);
       }
 
+      // Return the result
       return result;
+
+      // Catch any errors
     } catch (error) {
       // If it's a zod error
       if (error instanceof z.ZodError) {
@@ -109,6 +135,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Title"
+          value={formData.title}
+          onChange={handleChange}
         />
 
         {/* Checking for title input errors */}
@@ -128,6 +156,8 @@ const StartupForm = () => {
           className="startup-form_textarea"
           required
           placeholder="Startup Description"
+          value={formData.description}
+          onChange={handleChange}
         />
 
         {/* Checking for description errors */}
@@ -149,6 +179,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Category (Tech, Health, Education...)"
+          value={formData.category}
+          onChange={handleChange}
         />
 
         {/* Checking for category input errors */}
@@ -170,6 +202,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Image URL"
+          value={formData.link}
+          onChange={handleChange}
         />
 
         {/* Checking for image url errors */}
@@ -185,8 +219,8 @@ const StartupForm = () => {
 
         {/* Pitch Input */}
         <MDEditor
-          value={pitch}
-          onChange={(value) => setPitch(value as string)}
+          value={formData.pitch}
+          onChange={handlePitchChange}
           id="pitch"
           preview="edit"
           height={340}
