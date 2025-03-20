@@ -35,13 +35,16 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
 
           {/* User Image */}
-          <Image
-            src={user.image}
-            alt={user.name}
-            width={220}
-            height={220}
-            className="profile_image"
-          />
+          <div className="profile_image overflow-hidden w-56 h-56 rounded-full flex align-center justify-center">
+            <Image
+              src={user.image}
+              alt={user.name}
+              width={220}
+              height={220}
+              layout="intrinsic"
+              className="object-cover"
+            />
+          </div>
 
           {/* @ tag Username */}
           <p className="text-30-extrabold mt-7 text-center">

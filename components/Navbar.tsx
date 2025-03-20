@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
-import { BadgePlus, Github, LogOut } from "lucide-react";
+import { BadgePlus, Github, LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Navbar = async () => {
@@ -52,12 +52,15 @@ const Navbar = async () => {
                 </span>
 
                 {/* Avatar */}
-                <Avatar className="size-10">
+                <Avatar className="size-10 shadow-sm">
                   <AvatarImage
                     src={session?.user?.image || ""}
                     alt={session?.user?.name || ""}
+                    className="object-cover"
                   />
-                  <AvatarFallback>AV</AvatarFallback>
+                  <AvatarFallback className="bg-gray-200">
+                    <User className="size-8 text-white " />
+                  </AvatarFallback>
                 </Avatar>
               </Link>
             </>

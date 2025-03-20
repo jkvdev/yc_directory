@@ -48,14 +48,15 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </div>
 
         {/* Author Image */}
-        <Link href={`/user/${author?._id}`}>
+        <Link href={`/user/${author?._id}`} className="w-12 h-12 overflow-hidden rounded-full shadow-sm flex align-center justify-center">
           <Image
             src={author?.image!}
             // src="https://placehold.co/48x48"
             alt={author?.name!}
             width={48}
             height={48}
-            className="rounded-full"
+            layout="intrinsic"
+            className="object-cover"
           />
         </Link>
       </div>
