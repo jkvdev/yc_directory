@@ -6,6 +6,9 @@ import Image from "next/image";
 import UserStartups from "@/components/UserStartups";
 import { Suspense } from "react";
 import { StartupCardSkeleton } from "@/components/StartupCard";
+// Try with avatar
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "lucide-react";
 
 // Enable PPR
 export const experimental_ppr = true;
@@ -35,7 +38,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
 
           {/* User Image */}
-          <div className="profile_image overflow-hidden w-56 h-56 rounded-full flex items-center justify-center">
+          {/* <div className="profile_image overflow-hidden w-56 h-56 rounded-full flex items-center justify-center">
             <Image
               src={user.image}
               alt={user.name}
@@ -44,7 +47,19 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               layout="intrinsic"
               className="object-cover w-full h-full"
             />
-          </div>
+          </div> */}
+
+          {/* Avatar */}
+          <Avatar className="size-56 shadow-lg profile_image">
+            <AvatarImage
+              src={user.image}
+              alt={user.name}
+              className="object-cover w-full h-full"
+            />
+            <AvatarFallback className="bg-gray-200">
+              <User className="size-52 text-white " />
+            </AvatarFallback>
+          </Avatar>
 
           {/* @ tag Username */}
           <p className="text-30-extrabold mt-7 text-center">

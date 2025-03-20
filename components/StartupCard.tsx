@@ -1,10 +1,12 @@
 import { cn, formatDate } from "@/lib/utils";
-import { EyeIcon } from "lucide-react";
+import { EyeIcon, User } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Author, Startup } from "@/sanity/types";
 import { Skeleton } from "@/components/ui/skeleton";
+// Try with avatar
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // Generate Startup Card Type from Sanity's Typegen
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
@@ -52,15 +54,28 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           href={`/user/${author?._id}`}
           className="w-12 h-12 overflow-hidden rounded-full shadow-sm flex items-center justify-center"
         >
-          <Image
+          {/* <Image
             src={author?.image!}
             // src="https://placehold.co/48x48"
             alt={author?.name!}
             width={48}
             height={48}
             layout="intrinsic"
-            className="object-cover w-full h-full"
-          />
+            className="h-full w-auto object-contain"
+          /> */}
+
+          {/* Avatar */}
+          <Avatar className="size-12 shadow-sm">
+            <AvatarImage
+              src={author?.image!}
+              // src="https://placehold.co/48x48"
+              alt={author?.name!}
+              className="object-cover w-full h-full"
+            />
+            <AvatarFallback className="bg-gray-200">
+              <User className="size-10 text-white " />
+            </AvatarFallback>
+          </Avatar>
         </Link>
       </div>
 

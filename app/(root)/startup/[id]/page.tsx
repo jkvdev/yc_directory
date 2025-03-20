@@ -14,6 +14,9 @@ import markdownit from "markdown-it";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
+// Try with avatar
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "lucide-react";
 
 // Get sanity markdown functionality
 const md = markdownit();
@@ -74,7 +77,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-center mb-3"
             >
               {/* Author Avatar */}
-              <div className="overflow-hidden w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+              {/* <div className="overflow-hidden w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
                 <Image
                   src={post.author.image}
                   alt="avatar"
@@ -83,7 +86,19 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                   layout="intrinsic"
                   className="object-cover w-full h-full"
                 />
-              </div>
+              </div> */}
+
+              {/* Avatar */}
+              <Avatar className="size-16 shadow-lg">
+                <AvatarImage
+                  src={post.author.image}
+                  alt="avatar"
+                  className="object-cover w-full h-full"
+                />
+                <AvatarFallback className="bg-gray-200">
+                  <User className="size-14 text-white " />
+                </AvatarFallback>
+              </Avatar>
 
               {/* Author Name & Username */}
               <div>
