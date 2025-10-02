@@ -13,7 +13,7 @@
 ## 📸 Preview
 
 <!-- Replace with an actual screenshot or GIF -->
-![Project Screenshot](./public/logo.png)
+![Project Screenshot](./public/project-mockup.png)
 
 ---
 
