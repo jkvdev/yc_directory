@@ -123,7 +123,7 @@ Visit [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ---
 
-## ✅ Roadmap
+## 🗺️ Roadmap
 
 * [ ] Implement Update and Delete functionality for startup pitches
 * [ ] Add dark mode support
